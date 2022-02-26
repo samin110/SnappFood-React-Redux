@@ -1,0 +1,50 @@
+section.iranMap {
+  margin-top: 15rem;
+  height: 300px;
+  width: 100%;
+  padding: 0 2%;
+  display: none;
+}
+
+.iranMap__content {
+  background: #f8f8f8 url(../../../public/assets/images/map-back.svg) no-repeat
+    center;
+  background-size: cover;
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+}
+.iranMap__content h1 {
+  margin: 3rem 0;
+  font-size: 3.5rem;
+  color: #53565c;
+}
+
+.iranMap__listCities {
+  display: flex;
+  justify-content: space-between;
+}
+
+.iranMap__cities__name {
+  margin-top: 2rem;
+}
+
+.iranMap__cities__name p {
+  color: #000000;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.iranMap__cities__name :last-child {
+  letter-spacing: 0.3rem;
+}
+
+.iranMap__cities__name:hover p {
+  cursor: pointer;
+  color: #ff00a6;
+}
+
+@media screen and (min-width: 1024px) {
+  section.iranMap {
+    display: block;
+  }
+}

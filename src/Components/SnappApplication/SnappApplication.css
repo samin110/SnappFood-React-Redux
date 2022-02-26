@@ -1,0 +1,103 @@
+section.snappApp {
+  padding: 0 2%;
+  width: 100%;
+  height: 550px;
+}
+
+.snappApp__main {
+  background-color: #ebedf0;
+  display: flex;
+  justify-content: space-around;
+  border-bottom-right-radius: 10rem;
+}
+.snappApp__img {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 500px) {
+  .snappApp__img div {
+    display: none;
+  }
+}
+
+.snappApp__img div {
+  width: 424px;
+  height: 636px;
+}
+
+.snappApp__img div img {
+  width: 100%;
+  transform: translateY(-120px);
+}
+
+.snappApp__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex: 1;
+  padding: 5rem 10rem;
+}
+
+.snappApp__content h1 {
+  font-size: 4rem;
+  color: #3a3d42;
+}
+
+.snappApp__content p {
+  font-size: 1.7rem;
+  color: #53565c;
+  line-height: 3.5rem;
+}
+
+.snappApp__link p {
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+.snappApp__link__phoneNumber {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.snappApp__link__phoneNumber input {
+  border: 0.0625rem solid rgba(58, 61, 66, 0.12);
+  background-color: #fff;
+  outline: none;
+  border: 0;
+  width: 270px;
+  height: 45px;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: rgb(58 61 66 / 6%) 0px 1px 0px, rgb(0 0 0 / 20%) 0px 4px 16px -8px;
+  margin-bottom: 3rem;
+  font-family: iranSansLight;
+}
+
+.snappApp__link__phoneNumber input::placeholder {
+  font-family: iranSansLight;
+  font-size: 1.6rem;
+  color: #c3c3c5;
+}
+
+.snappApp__link__phoneNumber a {
+  position: absolute;
+  background-color: #ff00a6;
+  padding: 0.4rem 1.7rem;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  right: 15rem;
+  top: 8%;
+}
+
+.snappApp__logo div {
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
