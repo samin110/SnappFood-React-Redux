@@ -1,0 +1,48 @@
+section.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ebedf0;
+}
+
+.login__container {
+  padding: 2rem;
+  background-color: #ffffff;
+  width: 35%;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  margin: 3rem 0;
+}
+
+.login__input input {
+  width: 60%;
+}
+.login__input input:focus {
+  border: 1px solid #ff00a6;
+}
+
+.login__heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+  cursor: pointer;
+}
+
+.login__heading p {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-right: 0.8rem;
+}
+.login .signup__title {
+  right: 3%;
+}
+.signup__input input:focus ~ .signup__title,
+.signup__input input:not(:focus):valid ~ .signup__title {
+  top: -25%;
+  right: 3%;
+  font-size: 1rem;
+  color: #000000;
+}

@@ -1,0 +1,104 @@
+section.signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 450px;
+  background-color: #ebedf0;
+}
+.signup__container {
+  background-color: #ffffff;
+  width: 40%;
+  height: 95%;
+  border-radius: 0.8rem;
+  padding: 1.5rem;
+}
+.signup__container .signup__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.signup__heading div {
+  cursor: pointer;
+  border: 1px solid #b6b6b6;
+  padding: 1rem;
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+.signup__icon {
+  font-size: 2rem;
+  margin-left: 1rem;
+  color: #686868;
+}
+.signup__heading h2 {
+  font-size: 1.9rem;
+}
+.signup__input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.signup__input {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 90px;
+}
+
+.signup__input input {
+  border: 0.09375rem solid rgba(58, 61, 66, 0.12);
+  border-radius: 0.6rem;
+  outline: none;
+  padding: 1.4rem 1rem;
+  width: 25rem;
+  color: #686868;
+}
+.signup__input-container .signup__input input:focus {
+  border: 1px solid #ff00a6;
+}
+.signup__input-container .signup__input input:focus ~ .signup__title,
+.signup__input input:not(:focus):valid ~ .signup__title {
+  top: -20%;
+  font-size: 1.1rem;
+  transition: all 0.2s ease-in;
+}
+
+.signup__container p {
+  color: #53565cd3;
+  text-align: center;
+  font-size: large;
+  margin-bottom: 5rem;
+  font-weight: bold;
+}
+.signup__input span {
+  color: #53565cd3;
+  position: absolute;
+  top: 12%;
+  right: 5%;
+  font-size: 1.3rem;
+  pointer-events: none;
+  font-weight: bold;
+  transition: all 0.2s ease-out;
+}
+
+.signup__submit {
+  width: 100%;
+  outline: none;
+  border: 0;
+  background-color: #ebedf0;
+  padding: 1.1rem;
+  border-radius: 0.8rem;
+  font-family: iranSansBold;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.signup__submit:disabled {
+  cursor: no-drop;
+}

@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "amin",
+      "email": "mammad110a@gmail.com",
+      "password": "aminamin",
+      "passwordConfirm": "aminamin"
+    },
+    {
+      "id": 2,
+      "name": "amin",
+      "email": "mammad@gmail.com",
+      "password": "helloworld",
+      "passwordConfirm": "helloworld"
+    },
+    {
+      "id": 3,
+      "name": "amin",
+      "email": "mmmad@gmail.com",
+      "password": "hlloworld",
+      "passwordConfirm": "hlloworld"
+    }
+    
+  ]
+}
