@@ -4,19 +4,28 @@ import "./Signup.css";
 import { FiUserPlus } from "react-icons/fi";
 import * as Yup from "yup";
 import { postRequest } from "../../Api/Requests/PostRequest";
-import { getRequest } from "../../Api/Requests/GetRequest";
-
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { signupUsers } from "../../Redux/actions/actionUsers/usersAsyncAction";
 function Signup() {
+  // State For get Error from backend
+  const { error, data } = useSelector(({ usersReducer }) => usersReducer);
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
-      id: 0,
       name: "",
       email: "",
       password: "",
-      passwordConfirm: "",
+      confirmPassword: "",
     },
+
     validationSchema: Yup.object({
       name: Yup.string()
+        .min(6, "نام باید حداقل 6 حرف باشد !")
         .max(15, " نام باید حداکثر 15 حرف باشد!")
         .required("ضروری است!"),
       email: Yup.string()
@@ -29,24 +38,30 @@ function Signup() {
         )
         .min(8, "رمز عبور حداقل باید 8 حرف باشد!")
         .required("ضروری است!"),
-      passwordConfirm: Yup.string()
+      confirmPassword: Yup.string()
         .oneOf([Yup.ref("password"), null], "رمز عبور یکسان نیست")
         .required("ضروری است!"),
     }),
     isValid: false,
+
     onSubmit: async (values) => {
-      try {
-        await postRequest(values);
-      } catch (error) {
-        console.log(error);
-      }
+      //***  dispatch for request
+      dispatch(signupUsers(values));
+
+      // try {
+      // const response = await postRequest("/signup", values);
+      // localStorage.setItem("userToken", JSON.stringify(response.data));
+      // navigate("/");
+      //   setError(null);
+      // } catch (error) {
+      //   if (error && error.response.data.message) {
+      //     setError(error.response.data.message);
+      //   }
+      // }
     },
+
     validateOnMount: true,
   });
-
-  const body = {
-    name: "amin",
-  };
   return (
     <section className="signup">
       <div className="signup__container">
@@ -113,17 +128,18 @@ function Signup() {
                 required
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                id="passwordConfirm"
-                name="passwordConfirm"
-                value={formik.values.passwordConfirm}
+                id="confirmPassword"
+                name="confirmPassword"
+                value={formik.values.confirmPassword}
               />
               <span className="signup__title">تائید رمز عبور</span>
-              {formik.touched.passwordConfirm &&
-              formik.errors.passwordConfirm ? (
-                <div className="error">{formik.errors.passwordConfirm}</div>
+              {formik.touched.confirmPassword &&
+              formik.errors.confirmPassword ? (
+                <div className="error">{formik.errors.confirmPassword}</div>
               ) : null}
             </div>
           </div>
+          {error ? <div className="error ">{error}</div> : null}
           <button
             className="signup__submit"
             disabled={!formik.isValid}

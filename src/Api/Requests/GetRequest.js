@@ -1,5 +1,5 @@
 import { http } from "../api";
 
-export const getRequest = () => {
-  return http.get("/users");
+export const getRequest = (url) => {
+  return http.get(url);
 };

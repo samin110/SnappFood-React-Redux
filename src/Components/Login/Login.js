@@ -1,55 +1,20 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./Login.css";
 import { HiOutlineLogin } from "react-icons/hi";
-import { getRequest } from "../../Api/Requests/GetRequest";
 import { useNavigate } from "react-router-dom";
-
+import { postRequest } from "../../Api/Requests/PostRequest";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../../Redux/actions/actionUsers/usersAsyncAction";
 function Login() {
-  //  State For Data From Api
-  const [dataFromApi, setDataFromApi] = useState();
+  // State For Error
+  const { error } = useSelector(({ usersReducer }) => usersReducer);
+  console.log(error);
 
-  // Get Data From Login Inpus
-  const [dataFromInput, setDataFromInput] = useState();
-
+  const dispatch = useDispatch();
   // Redirect page
   const navigate = useNavigate();
-
-  // *** Start => Is User Signup Or Not Signup --- (Comparison between database value and user input value)
-
-  if (dataFromInput && dataFromApi) {
-    const findEqualValue = dataFromApi.filter(({ email, password }) => {
-      return (
-        email === dataFromInput.email && password === dataFromInput.password
-      );
-    });
-    if (findEqualValue.length > 0) {
-      // toast
-      setTimeout(() => {
-        navigate("/");
-      }, 1000);
-    } else {
-      // toast
-      console.log("Password is invalid!");
-    }
-  }
-
-  // ==== End => Is User Signup Or Not Signup
-
-  //  *** Start Get Data From Api & set Data in State
-  useEffect(() => {
-    const getDataFromApi = async () => {
-      try {
-        const res = await getRequest();
-        setDataFromApi(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getDataFromApi();
-  }, []);
-  // ===== End Get Data From Api
 
   // *** Start Formik and Validation with Yup
   const formik = useFormik({
@@ -57,6 +22,7 @@ function Login() {
       email: "",
       password: "",
     },
+
     validationSchema: Yup.object({
       email: Yup.string()
         .email("آدرس ایمیل نامعتبر است!")
@@ -69,10 +35,24 @@ function Login() {
         .min(8, "رمز عبور حداقل باید 8 حرف باشد!")
         .required("ضروری است!"),
     }),
-    onSubmit: (values) => {
-      setDataFromInput(values);
+
+    onSubmit: async (values) => {
+      dispatch(loginUser(values));
+      // try {
+      //   const response = await postRequest("/login", values);
+      //   console.log(response);
+      //   dispatch(getUserInfo(response.data));
+      //   setError(null);
+      //   // navigate("/");
+      // } catch (error) {
+      //   if (error && error.response.data.message) {
+      //     console.log(error.response.data.message);
+      //     setError(error.response.data.message);
+      //   }
+      // }
     },
     isValid: false,
+
     validateOnMount: true,
   });
   // ==== End Formik and Validation with Yup
@@ -117,6 +97,7 @@ function Login() {
               <div className="error">{formik.errors.password}</div>
             ) : null}
           </div>
+          {error && <div className="error">{error}</div>}
           <button
             type="submit"
             disabled={!formik.isValid}

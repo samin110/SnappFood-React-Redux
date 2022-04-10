@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import IranMap from "../Components/IranMap/IranMap";
 import Products from "../Components/Products/Products";
 import Slider from "../Components/Slider/Slider";
