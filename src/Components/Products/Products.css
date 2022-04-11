@@ -99,3 +99,44 @@ section.products {
 .products__materials .products__icon {
   font-size: 2rem;
 }
+
+
+/* Loading */
+.loading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10rem;
+}
+.loading div{
+  content: " ";
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ff00a6;
+  animation: loading 0.5s cubic-bezier(0,.86,.55,.99) infinite alternate;
+  margin-right: 0.5rem;
+}
+
+.loading .first{
+  animation-delay: 0.1s;
+}
+
+.loading .second{
+   animation-delay: 0.2s;
+  opacity: 0.75 ;
+
+}
+.loading .third{
+  animation-delay: 0.3s;
+  opacity: 0.5 ;
+}
+.loading .fourth{
+  animation-delay: 0.4s;
+  opacity: 0.3 ;
+}
+@keyframes loading{
+    from{transform: translatey(0);}
+    to{transform: translatey(-100px);}
+}
+/*End Loading */

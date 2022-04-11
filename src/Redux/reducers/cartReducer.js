@@ -6,7 +6,6 @@ import {
 
 const initialState = {
   orders: [],
-  sumOfOrders: 0,
 };
 
 export const cartReducer = (state = initialState, action) => {
@@ -26,22 +25,20 @@ export const cartReducer = (state = initialState, action) => {
         action.payload.quantity = 1;
 
         cloneFromOrders.push(action.payload);
-        return { ...state, orders: cloneFromOrders };
+
+        return {
+          ...state,
+          orders: cloneFromOrders,
+        };
       } else {
         // update Order by plus one quantity and set to the state orders
         const updateOrderItem = cloneFromOrders[findIndexOrder];
         updateOrderItem.quantity++;
         cloneFromOrders[findIndexOrder] = updateOrderItem;
-        const sumOfQuantity = cloneFromOrders.reduce(
-          (previousValue, currentValue) =>
-            previousValue + currentValue.quantity,
-          0
-        );
 
         return {
           ...state,
           orders: cloneFromOrders,
-          sumOfOrders: sumOfQuantity,
         };
       }
     }
@@ -52,11 +49,7 @@ export const cartReducer = (state = initialState, action) => {
         return order._id !== action.payload;
       });
 
-      const sumOfQuantity = filteredOrders.reduce(
-        (previousValue, currentValue) => previousValue + currentValue.quantity,
-        0
-      );
-      return { ...state, orders: filteredOrders, sumOfOrders: sumOfQuantity };
+      return { ...state, orders: filteredOrders };
     }
 
     case DECREMENT_QUANTITY_OF_CART: {
@@ -70,12 +63,8 @@ export const cartReducer = (state = initialState, action) => {
       const updateOrderItem = cloneFromOrders[findIndexOrder];
       updateOrderItem.quantity--;
       cloneFromOrders[findIndexOrder] = updateOrderItem;
-      const sumOfQuantity = cloneFromOrders.reduce(
-        (previousValue, currentValue) => previousValue + currentValue.quantity,
-        0
-      );
 
-      return { ...state, orders: cloneFromOrders, sumOfOrders: sumOfQuantity };
+      return { ...state, orders: cloneFromOrders };
     }
 
     default:

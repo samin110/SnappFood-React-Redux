@@ -11,12 +11,18 @@ import { MdOutlineDeliveryDining } from "react-icons/md";
 import { deleteFromCart } from "../../Redux/actions/actionCart/actionCart";
 import { CgTrash } from "react-icons/cg";
 import "./cart.css";
+import { sumOfQuantity } from "../../Utils/sumOfQuantity";
+import { totalAmountForInvoice } from "../../Utils/totalAmount";
 
 function Cart() {
-  const { orders, sumOfOrders } = useSelector(({ cartReducer }) => cartReducer);
+  const { orders } = useSelector(({ cartReducer }) => cartReducer);
   const dispatch = useDispatch();
 
   // calculate sum of quantity the orders
+  const sum = sumOfQuantity(orders);
+
+  // calculate total amount for invoice
+  const totalAmount = totalAmountForInvoice(orders);
 
   return (
     <section className='cart'>
@@ -74,6 +80,7 @@ function Cart() {
             </Link>
           </div>
         )}
+
         {/* Order */}
         <div className='order'>
           <div className='order__container'>
@@ -93,7 +100,7 @@ function Cart() {
             </div>
             <div className='invoice'>
               <div className='invoice__heading'>
-                <div className='invoice__title'>صورتحساب ({sumOfOrders})</div>
+                <div className='invoice__title'>صورتحساب ({sum})</div>
                 <button className='btn-icon'>
                   <CgTrash />
                 </button>
@@ -101,7 +108,9 @@ function Cart() {
               <div className='invoice__calculation'>
                 <div className='invoice__total'>
                   <div className='invoice__total-name'>مجموع</div>
-                  <div className='invoice__total-price'>22,000 تومان</div>
+                  <div className='invoice__total-price'>
+                    {totalAmount},000 تومان
+                  </div>
                 </div>
                 <div className='invoice__post-price'>
                   <div className='invoice__post-price-name'>هزینه ارسال</div>
@@ -113,7 +122,9 @@ function Cart() {
               <hr></hr>
               <div className='invoice__payable'>
                 <div className='invoice__payable-title'>قابل پرداخت</div>
-                <div className='invoice__payable-price'>42,000 تومان</div>
+                <div className='invoice__payable-price'>
+                  {totalAmount === 0 ? 0 : totalAmount + 20},000 تومان
+                </div>
               </div>
               <button className='invoice__btn'>قابل پرداخت</button>
             </div>
