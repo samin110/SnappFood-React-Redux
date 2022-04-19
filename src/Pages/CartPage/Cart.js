@@ -16,6 +16,8 @@ import { totalAmountForInvoice } from "../../Utils/totalAmount";
 
 function Cart() {
   const { orders } = useSelector(({ cartReducer }) => cartReducer);
+  const { data } = useSelector(({ usersReducer }) => usersReducer);
+  console.log(data);
   const dispatch = useDispatch();
 
   // calculate sum of quantity the orders
@@ -76,7 +78,7 @@ function Cart() {
             </div>
             <div className='cart__empty-title'>سبد خرید شما خالی است!</div>
             <Link to='/' className='cart__empty-button'>
-              بازگشت به سبد خرید
+              بازگشت به سبد محصولات
             </Link>
           </div>
         )}
@@ -126,7 +128,14 @@ function Cart() {
                   {totalAmount === 0 ? 0 : totalAmount + 20},000 تومان
                 </div>
               </div>
-              <button className='invoice__btn'>قابل پرداخت</button>
+              <button className='invoice__btn'>
+                {JSON.stringify(data) == JSON.stringify([]) ||
+                JSON.stringify(data) == JSON.stringify([null]) ? (
+                  <Link to='/signup?redirect=cart'>ورود به حساب کاربری</Link>
+                ) : (
+                  <Link to='/'>قابل پرداخت</Link>
+                )}
+              </button>
             </div>
           </div>
         </div>

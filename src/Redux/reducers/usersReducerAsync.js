@@ -24,7 +24,11 @@ export const usersReducer = (state = initialState, action) => {
       return { loading: false, data: [], error: action.payload };
 
     case GET_USER_FROM_LOCALSTORAGE:
-      return { loading: false, error: "", data: [action.payload] || [] };
+      return {
+        loading: false,
+        error: "",
+        data: [JSON.parse(localStorage.getItem("userInfo"))] || [],
+      };
 
     default:
       return state;

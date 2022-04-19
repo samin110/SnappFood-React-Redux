@@ -55,9 +55,8 @@ export const loginUser = (data) => {
   };
 };
 
-export const getFromLocalStorage = (data) => {
+export const getFromLocalStorage = () => {
   return {
     type: GET_USER_FROM_LOCALSTORAGE,
-    payload: data,
   };
 };

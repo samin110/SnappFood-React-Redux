@@ -1,5 +1,6 @@
 import { getRequest } from "../../../Api/Requests/GetRequest";
 import {
+  FETCH_PRODUCTS_FAILURE,
   FETCH_PRODUCTS_REQUEST,
   FETCH_PRODUCTS_SUCCESS,
 } from "./actionTypeProducts";
@@ -19,7 +20,7 @@ export const fetchProductsSuccess = (data) => {
 
 export const fetchProductsFailure = (error) => {
   return {
-    type: FETCH_PRODUCTS_SUCCESS,
+    type: FETCH_PRODUCTS_FAILURE,
     payload: error,
   };
 };
@@ -32,7 +33,7 @@ export const getProductsFromDB = () => {
         dispatch(fetchProductsSuccess(res.data));
       })
       .catch((error) => {
-        dispatch(fetchProductsFailure(error.response.data.message));
+        dispatch(fetchProductsFailure(error.message));
       });
   };
 };

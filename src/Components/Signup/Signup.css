@@ -2,13 +2,13 @@ section.signup {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 450px;
+  height: 550px;
   background-color: #ebedf0;
 }
 .signup__container {
   background-color: #ffffff;
   width: 40%;
-  height: 95%;
+  height: 85%;
   border-radius: 0.8rem;
   padding: 1.5rem;
 }
@@ -101,4 +101,22 @@ section.signup {
 }
 .signup__submit:disabled {
   cursor: no-drop;
+}
+
+.signup__already{
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 1px solid #c2c0c0;
+  width: 25%;
+  padding: 0.8rem 0;
+  border-radius: 0.8rem;
+  text-align: center;
+}
+.signup__already:hover{
+   border: 1px solid #ff43bd;
+}
+
+.signup__already a{
+  color:#ff43bd;
 }
