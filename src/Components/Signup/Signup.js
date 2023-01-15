@@ -51,7 +51,9 @@ function Signup() {
     onSubmit: async (values) => {
       //***  dispatch for request
       dispatch(signupUsers(values));
-      navigate(`/${queryParameter}`);
+      if (queryParameter === "cart") {
+        navigate(`/${queryParameter}`);
+      }
       // try {
       // const response = await postRequest("/signup", values);
       // localStorage.setItem("userToken", JSON.stringify(response.data));

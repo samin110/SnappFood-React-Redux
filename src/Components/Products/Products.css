@@ -114,29 +114,24 @@ section.products {
   height: 20px;
   border-radius: 50%;
   background-color: #ff00a6;
-  animation: loading 0.5s cubic-bezier(0,.86,.55,.99) infinite alternate;
-  margin-right: 0.5rem;
+  animation: loading 0.5s ease-out infinite alternate-reverse;
+  margin-right: 1.2rem;
 }
-
 .loading .first{
-  animation-delay: 0.1s;
+  animation-delay: 0.2s;
 }
 
 .loading .second{
-   animation-delay: 0.2s;
-  opacity: 0.75 ;
-
+animation-delay: 0.4s; 
 }
 .loading .third{
-  animation-delay: 0.3s;
-  opacity: 0.5 ;
+  animation-delay: 0.6s;
 }
-.loading .fourth{
-  animation-delay: 0.4s;
-  opacity: 0.3 ;
-}
+
 @keyframes loading{
-    from{transform: translatey(0);}
-    to{transform: translatey(-100px);}
+    from{transform:scale(0.7);
+    opacity: 0.3;
+    }
+    to{transform: scale(1.2)}
 }
 /*End Loading */
