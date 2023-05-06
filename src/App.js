@@ -8,6 +8,7 @@ import LoginPage from "./Pages/LoginPage";
 import { useDispatch } from "react-redux";
 import { getProductsFromDB } from "./Redux/actions/actionProducts/actionProducts";
 import { getFromLocalStorage } from "./Redux/actions/actionUsers/usersAsyncAction";
+import toast, { Toaster } from "react-hot-toast";
 import Cart from "./Pages/CartPage/Cart";
 function App() {
   // Get User Information From Local Storage on mount
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <div className='App'>
+      <Toaster />
       <BrowserRouter>
         <Layout>
           <Routes>

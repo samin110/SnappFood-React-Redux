@@ -1,9 +1,6 @@
+import { toast } from "react-hot-toast";
 import { getRequest } from "../../../Api/Requests/GetRequest";
-import {
-  FETCH_PRODUCTS_FAILURE,
-  FETCH_PRODUCTS_REQUEST,
-  FETCH_PRODUCTS_SUCCESS,
-} from "./actionTypeProducts";
+import { FETCH_PRODUCTS_FAILURE, FETCH_PRODUCTS_REQUEST, FETCH_PRODUCTS_SUCCESS } from "./actionTypeProducts";
 
 export const fetchProductsRequest = () => {
   return {
@@ -34,6 +31,15 @@ export const getProductsFromDB = () => {
       })
       .catch((error) => {
         dispatch(fetchProductsFailure(error.message));
+        if (error)
+          toast.error("خطا در برقراری ارتباط با سرور !!!", {
+            style: {
+              borderRadius: "10px",
+              fontSize: "15px",
+              background: "#333",
+              color: "#fff",
+            },
+          });
       });
   };
 };

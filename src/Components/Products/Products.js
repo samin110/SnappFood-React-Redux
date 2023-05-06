@@ -6,25 +6,20 @@ import ProductsList from "../ProductsList/ProductsList";
 function Products() {
   const { products } = useSelector((state) => state.productsReducer);
 
-  // Render Products OR Loading
-  const showProducts = () => {
-    if (!products) {
-      return (
+  console.log(products);
+
+  return (
+    <section className='products'>
+      <h1>غذاها</h1>
+      {products.length === 0 ? (
         <div className='loading'>
           <div className='first'></div>
           <div className='second'></div>
           <div className='third'></div>
         </div>
-      );
-    } else {
-      return <ProductsList products={products} />;
-    }
-  };
-
-  return (
-    <section className='products'>
-      <h1>غذاها</h1>
-      {showProducts()}
+      ) : (
+        <ProductsList products={products} />
+      )}
     </section>
   );
 }

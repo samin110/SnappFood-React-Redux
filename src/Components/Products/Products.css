@@ -100,15 +100,14 @@ section.products {
   font-size: 2rem;
 }
 
-
 /* Loading */
-.loading{
+.loading {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 10rem;
 }
-.loading div{
+.loading div {
   content: " ";
   width: 20px;
   height: 20px;
@@ -117,21 +116,24 @@ section.products {
   animation: loading 0.5s ease-out infinite alternate-reverse;
   margin-right: 1.2rem;
 }
-.loading .first{
+.loading .first {
   animation-delay: 0.2s;
 }
 
-.loading .second{
-animation-delay: 0.4s; 
+.loading .second {
+  animation-delay: 0.4s;
 }
-.loading .third{
+.loading .third {
   animation-delay: 0.6s;
 }
 
-@keyframes loading{
-    from{transform:scale(0.7);
+@keyframes loading {
+  from {
+    transform: scale(0.7);
     opacity: 0.3;
-    }
-    to{transform: scale(1.2)}
+  }
+  to {
+    transform: scale(1.2);
+  }
 }
 /*End Loading */
